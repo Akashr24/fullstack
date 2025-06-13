@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>University Management System</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div id="app">
+        <!-- Login Page -->
+        <div id="loginPage" class="page active">
+            <div class="login-container">
+                <div class="login-header">
+                    <div class="login-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h1>University Management</h1>
+                    <p>Access your academic portal</p>
+                </div>
+                
+                <div class="login-card">
+                    <h2>Sign In</h2>
+                    <p>Enter your credentials to access the system</p>
+                    
+                    <form id="loginForm">
+                        <div class="form-group">
+                            <label for="username">Username</label>
+                            <input type="text" id="username" placeholder="Enter your username" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <div class="password-input">
+                                <input type="password" id="password" placeholder="Enter your password" required>
+                                <button type="button" id="togglePassword">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <button type="submit" id="loginBtn">Sign In</button>
+                    </form>
+                    
+                    <div class="demo-info">
+                        <p>Demo credentials: Any username and password</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dashboard Page -->
+        <div id="dashboardPage" class="page">
+            <!-- Header -->
+            <header class="header">
+                <div class="header-content">
+                    <h1>University Management System</h1>
+                    <div class="header-actions">
+                        <span class="welcome-text">Welcome, <span id="currentUser">Admin</span></span>
+                        <button id="logoutBtn" class="logout-btn">
+                            <i class="fas fa-sign-out-alt"></i>
+                            Logout
+                        </button>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Navigation -->
+            <nav class="navigation">
+                <div class="nav-content">
+                    <button class="nav-btn active" data-section="overview">Overview</button>
+                    <button class="nav-btn" data-section="students">Students</button>
+                    <button class="nav-btn" data-section="departments">Departments</button>
+                    <button class="nav-btn" data-section="instructors">Instructors</button>
+                    <button class="nav-btn" data-section="courses">Courses</button>
+                    <button class="nav-btn" data-section="registrations">Registrations</button>
+                </div>
+            </nav>
+
+            <!-- Main Content -->
+            <main class="main-content">
+                <!-- Overview Section -->
+                <section id="overviewSection" class="content-section active">
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-content">
+                                <div class="stat-info">
+                                    <p class="stat-title">Total Students</p>
+                                    <p class="stat-number" id="studentsCount">0</p>
+                                </div>
+                                <div class="stat-icon blue">
+                                    <i class="fas fa-users"></i>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="stat-card">
+                            <div class="stat-content">
+                                <div class="stat-info">
+                                    <p class="stat-title">Departments</p>
+                                    <p class="stat-number" id="departmentsCount">0</p>
+                                </div>
+                                <div class="stat-icon green">
+                                    <i class="fas fa-building"></i>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="stat-card">
+                            <div class="stat-content">
+                                <div class="stat-info">
+                                    <p class="stat-title">Instructors</p>
+                                    <p class="stat-number" id="instructorsCount">0</p>
+                                </div>
+                                <div class="stat-icon purple">
+                                    <i class="fas fa-user-check"></i>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="stat-card">
+                            <div class="stat-content">
+                                <div class="stat-info">
+                                    <p class="stat-title">Courses</p>
+                                    <p class="stat-number" id="coursesCount">0</p>
+                                </div>
+                                <div class="stat-icon orange">
+                                    <i class="fas fa-book-open"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="overview-card">
+                        <h3>System Overview</h3>
+                        <p>Manage your university's academic data efficiently</p>
+                        
+                        <div class="quick-actions">
+                            <div class="quick-action-section">
+                                <h4>Quick Actions</h4>
+                                <button class="quick-action-btn" data-section="students">
+                                    <i class="fas fa-user-plus"></i>
+                                    Add New Student
+                                </button>
+                                <button class="quick-action-btn" data-section="courses">
+                                    <i class="fas fa-book-open"></i>
+                                    Manage Courses
+                                </button>
+                            </div>
+                            
+                            <div class="recent-activity">
+                                <h4>Recent Activity</h4>
+                                <ul>
+                                    <li>• 5 new students registered today</li>
+                                    <li>• 2 new courses added this week</li>
+                                    <li>• 15 enrollments processed</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Students Section -->
+                <section id="studentsSection" class="content-section">
+                    <div class="section-header">
+                        <div>
+                            <h2>Students Management</h2>
+                            <p>Manage student records and information</p>
+                        </div>
+                        <button id="addStudentBtn" class="add-btn">
+                            <i class="fas fa-plus"></i>
+                            Add Student
+                        </button>
+                    </div>
+                    
+                    <div class="table-controls">
+                        <div class="search-box">
+                            <i class="fas fa-search"></i>
+                            <input type="text" id="studentsSearch" placeholder="Search students...">
+                        </div>
+                        <div class="table-info">
+                            <span id="studentsTableCount">0 students</span>
+                        </div>
+                    </div>
+                    
+                    <div class="table-container">
+                        <table id="studentsTable">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Contact</th>
+                                    <th>Department</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- Departments Section -->
+                <section id="departmentsSection" class="content-section">
+                    <div class="section-header">
+                        <div>
+                            <h2>Departments Management</h2>
+                            <p>Manage academic departments</p>
+                        </div>
+                        <button id="addDepartmentBtn" class="add-btn">
+                            <i class="fas fa-plus"></i>
+                            Add Department
+                        </button>
+                    </div>
+                    
+                    <div class="table-controls">
+                        <div class="search-box">
+                            <i class="fas fa-search"></i>
+                            <input type="text" id="departmentsSearch" placeholder="Search departments...">
+                        </div>
+                        <div class="table-info">
+                            <span id="departmentsTableCount">0 departments</span>
+                        </div>
+                    </div>
+                    
+                    <div class="table-container">
+                        <table id="departmentsTable">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Department Name</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- Instructors Section -->
+                <section id="instructorsSection" class="content-section">
+                    <div class="section-header">
+                        <div>
+                            <h2>Instructors Management</h2>
+                            <p>Manage instructor records and information</p>
+                        </div>
+                        <button id="addInstructorBtn" class="add-btn">
+                            <i class="fas fa-plus"></i>
+                            Add Instructor
+                        </button>
+                    </div>
+                    
+                    <div class="table-controls">
+                        <div class="search-box">
+                            <i class="fas fa-search"></i>
+                            <input type="text" id="instructorsSearch" placeholder="Search instructors...">
+                        </div>
+                        <div class="table-info">
+                            <span id="instructorsTableCount">0 instructors</span>
+                        </div>
+                    </div>
+                    
+                    <div class="table-container">
+                        <table id="instructorsTable">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Capacity</th>
+                                    <th>Department</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- Courses Section -->
+                <section id="coursesSection" class="content-section">
+                    <div class="section-header">
+                        <div>
+                            <h2>Courses Management</h2>
+                            <p>Manage course offerings and assignments</p>
+                        </div>
+                        <button id="addCourseBtn" class="add-btn">
+                            <i class="fas fa-plus"></i>
+                            Add Course
+                        </button>
+                    </div>
+                    
+                    <div class="table-controls">
+                        <div class="search-box">
+                            <i class="fas fa-search"></i>
+                            <input type="text" id="coursesSearch" placeholder="Search courses...">
+                        </div>
+                        <div class="table-info">
+                            <span id="coursesTableCount">0 courses</span>
+                        </div>
+                    </div>
+                    
+                    <div class="table-container">
+                        <table id="coursesTable">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Course Name</th>
+                                    <th>Instructor</th>
+                                    <th>Email</th>
+                                    <th>Department</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- Registrations Section -->
+                <section id="registrationsSection" class="content-section">
+                    <div class="section-header">
+                        <div>
+                            <h2>Course Registrations</h2>
+                            <p>Manage student course enrollments</p>
+                        </div>
+                        <button id="addRegistrationBtn" class="add-btn">
+                            <i class="fas fa-plus"></i>
+                            Register Student
+                        </button>
+                    </div>
+                    
+                    <div class="table-controls">
+                        <div class="search-box">
+                            <i class="fas fa-search"></i>
+                            <input type="text" id="registrationsSearch" placeholder="Search registrations...">
+                        </div>
+                        <div class="table-info">
+                            <span id="registrationsTableCount">0 registrations</span>
+                        </div>
+                    </div>
+                    
+                    <div class="table-container">
+                        <table id="registrationsTable">
+                            <thead>
+                                <tr>
+                                    <th>Registration ID</th>
+                                    <th>Student</th>
+                                    <th>Course</th>
+                                    <th>Department</th>
+                                    <th>Enrollment Date</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <!-- Modal for forms -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">Form</h3>
+                <button id="closeModal" class="close-btn">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="modalForm">
+                    <div id="formFields"></div>
+                    <button type="submit" id="submitBtn">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast notifications -->
+    <div id="toastContainer"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
